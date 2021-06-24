@@ -1,4 +1,4 @@
-@isTest
+@IsTest
 public class Opportunity_t extends DomainBuilder {
 
 	public Opportunity_t(Account_t a) {

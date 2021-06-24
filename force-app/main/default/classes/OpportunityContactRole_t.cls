@@ -1,4 +1,4 @@
-@isTest
+@IsTest
 public class OpportunityContactRole_t extends DomainBuilder {
 
 	public OpportunityContactRole_t(Opportunity_t o, Contact_t c) {

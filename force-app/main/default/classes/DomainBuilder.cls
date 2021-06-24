@@ -1,3 +1,4 @@
+@IsTest
 public abstract class DomainBuilder {
 
     private static DirectedGraph graph = new DirectedGraph();

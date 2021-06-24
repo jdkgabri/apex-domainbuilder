@@ -1,3 +1,4 @@
+@IsTest
 public class Contact_t extends DomainBuilder {
 
     public Contact_t() {

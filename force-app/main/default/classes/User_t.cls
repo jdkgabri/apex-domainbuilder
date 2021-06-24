@@ -1,4 +1,5 @@
-public with sharing class User_t extends DomainBuilder {
+@IsTest
+public class User_t extends DomainBuilder {
 
 	// Note: when org is not in english this will throw an exception due to translation of standard user profile name
 	private static final Id STANDARD_USER = [SELECT Id FROM Profile WHERE Name='Standard User'].Id;
