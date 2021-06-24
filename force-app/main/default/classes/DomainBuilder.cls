@@ -69,6 +69,8 @@ public abstract class DomainBuilder {
 
 
     public DomainBuilder recordType(String developerName) {
+        // Note: cache this: type.getDescribe().getRecordTypeInfosByDeveloperName()
+        // Note: friendly hanlde null pointer exception if record type does not exist
         Id rtId = type.getDescribe().getRecordTypeInfosByDeveloperName().get(developerName).getRecordTypeId();
         return set('RecordTypeId', rtId);
     }
