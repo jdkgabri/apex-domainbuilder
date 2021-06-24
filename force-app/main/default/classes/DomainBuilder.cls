@@ -1,11 +1,10 @@
-@IsTest
 public abstract class DomainBuilder {
 
     private static DirectedGraph graph = new DirectedGraph();
     private static Set<DomainBuilder> objects = new Set<DomainBuilder>();
 
     private Boolean isSetupObject;
-    private Map<SObjectField, DomainBuilder> parentByRelationship = new Map<SObjectField, DomainBuilder>();
+    protected Map<SObjectField, DomainBuilder> parentByRelationship = new Map<SObjectField, DomainBuilder>();
     private Map<SObjectField, Map<SObjectField, List<DomainBuilder>>> relationshipsToSync
                         = new Map<SObjectField, Map<SObjectField, List<DomainBuilder>>>();
     public SObject record;
