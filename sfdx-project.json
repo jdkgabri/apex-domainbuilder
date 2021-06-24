@@ -1,11 +1,17 @@
 {
     "packageDirectories": [
         {
+            "path": "fflib"
+        },
+        {
             "path": "force-app",
             "default": true,
             "package": "apex-domainbuilder",
             "versionName": "Summer '20",
             "versionNumber": "1.2.0.NEXT"
+        },
+        {
+            "path": "copado"
         }
     ],
     "namespace": "",
