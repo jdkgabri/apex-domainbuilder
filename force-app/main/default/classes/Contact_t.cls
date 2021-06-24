@@ -8,7 +8,7 @@ public class Contact_t extends DomainBuilder {
     }
 
     public Contact_t(Account_t a) {
-        super(Contact.SObjectType);
+        this();
         setParent(Contact.AccountId, a);
     }
 
