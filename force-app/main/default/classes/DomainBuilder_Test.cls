@@ -80,6 +80,44 @@ public class DomainBuilder_Test {
         System.assertEquals(2, [SELECT Count() FROM Contact]);
     }
 
+    @IsTest
+    private static void doesWork() {
+
+        Account acc = new Account(Name = 'Test');
+        insert acc;
+
+        Contact con = new Contact(LastName = 'Test', AccountId = acc.Id);
+        insert con;
+
+        Case c = new Case(ContactId = con.Id);
+        insert c;
+
+        Opportunity o = new Opportunity(Name = 'Test', StageName = 'Open', CloseDate = System.today(), AccountId = acc.Id);
+        insert o;
+
+        System.assertEquals(1, [SELECT Count() FROM Account]);
+        System.assertEquals(1, [SELECT Count() FROM Opportunity]);
+        System.assertEquals(1, [SELECT Count() FROM Contact]);
+        System.assertEquals(1, [SELECT Count() FROM Case]);
+    }
+
+    @IsTest
+    private static void doesNotWork() {
+
+        new Account_t()
+                .add(new Contact_t()
+                    .add(new Case_t()))
+
+                .add(new Opportunity_t())
+
+                .persist();
+
+        System.assertEquals(1, [SELECT Count() FROM Account]);
+        System.assertEquals(1, [SELECT Count() FROM Opportunity]);
+        System.assertEquals(1, [SELECT Count() FROM Contact]);
+        System.assertEquals(1, [SELECT Count() FROM Case]);
+    }
+
 
     @IsTest
     private static void worksWithSetupObjects() {

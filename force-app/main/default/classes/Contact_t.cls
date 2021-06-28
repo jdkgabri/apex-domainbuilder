@@ -12,6 +12,10 @@ public class Contact_t extends DomainBuilder {
         setParent(Contact.AccountId, a);
     }
 
+    public Contact_t add(Case_t c) {
+		return (Contact_t) c.setParent(Case.ContactId, this);
+	}
+
     public Contact_t first(String value) {
         return (Contact_t) set(Contact.FirstName, value);
     }
