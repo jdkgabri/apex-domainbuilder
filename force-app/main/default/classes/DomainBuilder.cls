@@ -63,7 +63,7 @@ public abstract class DomainBuilder {
         setupUow = unitOfWork();
 
         objects.clear();
-        // graph = new DirectedGraph(); shall we add this here?
+        graph = new DirectedGraph();
 
         return record;
     }

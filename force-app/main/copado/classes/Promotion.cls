@@ -20,6 +20,6 @@ public class Promotion extends DomainBuilder {
     }
 
     public Promotion() {
-        this( new Release(), new Credential(), new Credential() );
+        super(copado__Promotion__c.SObjectType);
     }
 }

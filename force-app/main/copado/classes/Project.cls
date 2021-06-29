@@ -13,4 +13,8 @@ public class Project extends DomainBuilder {
     public Project add(Release rel) {
         return (Project) rel.setParent(copado__Release__c.copado__Project__c, this);
     }
+
+    public Project add(Promotion pro) {
+        return (Project) pro.setParent(copado__Promotion__c.copado__Project__c, this);
+    }
 }
