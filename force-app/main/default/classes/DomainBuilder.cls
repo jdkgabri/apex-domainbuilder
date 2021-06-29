@@ -63,6 +63,7 @@ public abstract class DomainBuilder {
         setupUow = unitOfWork();
 
         objects.clear();
+        // graph = new DirectedGraph(); shall we add this here?
 
         return record;
     }
@@ -210,12 +211,15 @@ public abstract class DomainBuilder {
 
             countDependencies();
 
+            System.debug(parents);
             while(!pureChilds.isEmpty()) {
                 SObjectType cur = (SObjectType) pureChilds.iterator().next();
                 pureChilds.remove(cur);
 
                 result.add(cur);
 
+                System.debug(cur);
+                System.debug(parents.get(cur));
                 for(SObjectType type : parents.get(cur)) {
                     if(childCount.containsKey(type)) {
                         Integer newCnt = childCount.get(type) - 1;
