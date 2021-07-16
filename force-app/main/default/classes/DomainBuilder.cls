@@ -32,12 +32,9 @@ public abstract class DomainBuilder {
     // PUBLIC
 
     public SObject persist() {
-        fflib_SObjectUnitOfWork dataUow = unitOfWork();
-        fflib_SObjectUnitOfWork setupUow = unitOfWork();
+        fflib_SObjectUnitOfWork uow = unitOfWork();
 
         for(DomainBuilder obj: objects) {
-            fflib_SObjectUnitOfWork uow = (obj.isSetupObject) ? setupUow : dataUow;
-
             if(obj.record.Id == null) {
                 uow.registerNew(obj.record);
             }
@@ -48,19 +45,7 @@ public abstract class DomainBuilder {
             }
         }
 
-        dataUow.commitWork();
-
-        if(Test.isRunningTest()) {
-            System.runAs(new User(Id = UserInfo.getUserId())) {
-                setupUow.commitWork();
-            }
-        }
-        else {
-            System.debug(LoggingLevel.ERROR, 'PermissionSetAssignment can not be inserted (Mixed DML)');
-        }
-
-        dataUow = unitOfWork();
-        setupUow = unitOfWork();
+        uow.commitWork();
 
         objects.clear();
         graph = new DirectedGraph();
