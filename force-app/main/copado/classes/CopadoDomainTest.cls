@@ -72,9 +72,7 @@ public class CopadoDomainTest {
     private static void userStoryWithAllParents() {
 
         // Exercise
-        Promotion pro = new Promotion(new Release(), new Credential(), new Credential());
-
-        pro.persist();
+        Promotion pro = new Promotion(new Release(), new Credential(), new Credential()).persist();
 
         new Deployment(pro)
                 .add( new Step() )
